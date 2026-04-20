@@ -52,7 +52,7 @@ const Shop = () => {
                 onClick={() => setSelectedCategory(category)}
                 className={`px-6 py-2 rounded-full whitespace-nowrap font-display font-bold text-sm tracking-tight transition-all
                   ${selectedCategory === category 
-                    ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/20 scale-105' 
+                    ? 'bg-primary text-primary-foreground scale-105' 
                     : 'bg-muted/50 text-muted-foreground hover:bg-muted'
                   }`}
               >

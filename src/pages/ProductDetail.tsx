@@ -152,7 +152,7 @@ const ProductDetail = () => {
               onClick={() => {
                 for(let i=0; i<quantity; i++) addToCart(product);
               }}
-              className="flex-1 rounded-full h-16 font-display font-bold text-lg shadow-2xl shadow-primary/20 gap-3"
+              className="flex-1 rounded-full h-16 font-display font-bold text-lg gap-3"
             >
               Add to Collection <Plus className="h-5 w-5" />
             </Button>

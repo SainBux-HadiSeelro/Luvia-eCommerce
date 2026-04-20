@@ -59,10 +59,6 @@ export const Footer = () => {
           <p className="text-[10px] text-muted-foreground tracking-[0.4em] uppercase font-black">
             © 2024 LUVIA CONCEPT.
           </p>
-          <div className="flex items-center space-x-3">
-            <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></div>
-            <span className="text-[10px] uppercase tracking-[0.4em] font-black text-muted-foreground/60">Shop status: Active</span>
-          </div>
         </div>
         
         <div className="flex gap-8">

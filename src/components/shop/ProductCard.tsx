@@ -22,7 +22,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       viewport={{ once: true }}
       className="group"
     >
-      <GlassCard className="p-0 overflow-hidden relative border-white/5 shadow-none transition-all duration-500 hover:shadow-2xl hover:shadow-primary/5 hover:-translate-y-2">
+      <GlassCard className="p-0 overflow-hidden relative border-white/5 shadow-none transition-all duration-500 hover:-translate-y-2">
         <Link to={`/product/${product.id}`} className="block relative aspect-square overflow-hidden bg-muted">
           <motion.img
             whileHover={{ scale: 1.1 }}
@@ -59,11 +59,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           
           <div className="pt-4 mt-4 border-t border-white/10 flex items-center justify-between">
             <Button 
-              asChild
+              render={<Link to={`/product/${product.id}`} />}
+              nativeButton={false}
               variant="ghost" 
               className="px-0 hover:bg-transparent font-medium group/btn"
             >
-              <Link to={`/product/${product.id}`} className="flex items-center gap-2">
+              <div className="flex items-center gap-2">
                 Discover Details
                 <motion.span 
                   className="inline-block"
@@ -71,13 +72,13 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                 >
                   →
                 </motion.span>
-              </Link>
+              </div>
             </Button>
             
             <motion.button
               onClick={() => addToCart(product)}
               whileTap={{ scale: 0.9 }}
-              className="h-10 w-10 bg-primary text-primary-foreground rounded-full flex items-center justify-center shadow-lg shadow-primary/20 hover:scale-105 transition-transform"
+              className="h-10 w-10 bg-primary text-primary-foreground rounded-full flex items-center justify-center hover:scale-105 transition-transform"
             >
               <Plus className="h-5 w-5" />
             </motion.button>

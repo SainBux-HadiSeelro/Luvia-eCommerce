@@ -34,9 +34,12 @@ export const Navbar = () => {
     >
       <nav className={cn(
         "flex items-center justify-between px-8 py-4 rounded-full border border-white/10 backdrop-blur-xl transition-all duration-500",
-        isScrolled ? "bg-white/10 dark:bg-white/5 shadow-2xl" : "bg-white/5 dark:bg-transparent"
+        isScrolled ? "bg-white/10 dark:bg-white/5 shadow-2xl text-white" : "bg-white/5 dark:bg-transparent"
       )}>
-        <Link to="/" className="text-2xl font-display font-black tracking-tighter text-foreground">
+        <Link to="/" className={cn(
+          "text-2xl font-display font-black tracking-tighter transition-colors",
+          isScrolled ? "text-white" : "text-foreground"
+        )}>
           LUVIA.
         </Link>
 
@@ -47,8 +50,9 @@ export const Navbar = () => {
               key={link.path}
               to={link.path}
               className={({ isActive }) => cn(
-                "text-xs font-bold tracking-widest uppercase transition-all hover:text-foreground/70",
-                isActive ? "text-primary" : "text-muted-foreground"
+                "text-xs font-bold tracking-widest uppercase transition-all",
+                isActive ? (isScrolled ? "text-white" : "text-primary") : (isScrolled ? "text-white/70" : "text-muted-foreground"),
+                "hover:text-white"
               )}
             >
               {link.title}
@@ -62,16 +66,17 @@ export const Navbar = () => {
           </Button>
 
           <Sheet>
-            <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="relative">
-                <ShoppingBag className="h-5 w-5" />
-                {totalItems > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-[10px] font-bold h-4 w-4 rounded-full flex items-center justify-center">
-                    {totalItems}
-                  </span>
-                )}
-              </Button>
-            </SheetTrigger>
+            <SheetTrigger 
+              render={
+                <Button variant="ghost" size="icon" className="relative">
+                  <ShoppingBag className="h-5 w-5" />
+                  {totalItems > 0 && (
+                    <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-[10px] font-bold h-4 w-4 rounded-full flex items-center justify-center">
+                      {totalItems}
+                    </span>
+                  )}
+                </Button>
+            } />
             <SheetContent className="w-full sm:max-w-md p-0 glass dark:glass-dark border-l border-white/10">
               <div className="flex flex-col h-full bg-white/40 dark:bg-black/20 backdrop-blur-3xl">
                 <SheetHeader className="p-6">
@@ -92,8 +97,13 @@ export const Navbar = () => {
                         <p className="text-lg font-medium">Your cart is empty</p>
                         <p className="text-sm text-muted-foreground">Start adding some items to your collection.</p>
                       </div>
-                      <Button asChild variant="outline" className="mt-4 rounded-full px-8">
-                        <Link to="/shop">Browse Items</Link>
+                      <Button 
+                        render={<Link to="/shop" />} 
+                        nativeButton={false} 
+                        variant="outline" 
+                        className="mt-4 rounded-full px-8"
+                      >
+                        Browse Items
                       </Button>
                     </div>
                   ) : (
@@ -153,7 +163,7 @@ export const Navbar = () => {
                     <p className="text-[10px] uppercase tracking-widest text-muted-foreground text-center">
                       Shipping and taxes computed at checkout
                     </p>
-                    <Button className="w-full rounded-full py-6 font-display font-bold text-lg shadow-xl shadow-primary/20">
+                    <Button className="w-full rounded-full py-6 font-display font-bold text-lg">
                       Checkout Now
                     </Button>
                   </div>
@@ -164,11 +174,12 @@ export const Navbar = () => {
 
           {/* Mobile Menu */}
           <Sheet>
-            <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="md:hidden">
-                <Menu className="h-6 w-6" />
-              </Button>
-            </SheetTrigger>
+            <SheetTrigger 
+              render={
+                <Button variant="ghost" size="icon" className="md:hidden">
+                  <Menu className="h-6 w-6" />
+                </Button>
+            } />
             <SheetContent side="left" className="w-[300px] glass dark:glass-dark border-r border-white/10">
               <div className="flex flex-col h-full bg-white/40 dark:bg-black/20 backdrop-blur-3xl pt-12">
                 <div className="px-6 mb-8">

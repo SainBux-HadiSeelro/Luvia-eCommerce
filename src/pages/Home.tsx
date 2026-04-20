@@ -13,7 +13,7 @@ const Home = () => {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center px-6 md:px-12">
+      <section className="relative min-h-[90vh] flex items-center px-6 md:px-12 pt-32 pb-20">
         <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -38,8 +38,13 @@ const Home = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button asChild size="lg" className="rounded-full px-12 h-16 bg-foreground text-background hover:bg-primary hover:text-primary-foreground font-bold text-base shadow-2xl transition-all hover:scale-105">
-                <Link to="/shop">Explore Catalogue</Link>
+              <Button 
+                render={<Link to="/shop" />} 
+                nativeButton={false} 
+                size="lg" 
+                className="rounded-full px-12 h-16 bg-foreground text-background hover:bg-primary hover:text-primary-foreground font-bold text-base transition-all hover:scale-105"
+              >
+                Explore Catalogue
               </Button>
             </div>
           </motion.div>
@@ -138,8 +143,12 @@ const Home = () => {
               <h3 className="text-white font-display text-5xl font-black tracking-tighter leading-tight mb-6">
                 PREMIUM TECH<br/>ESSENTIALS
               </h3>
-              <Button asChild className="w-fit rounded-full glass bg-white/10 hover:bg-white hover:text-primary border-none">
-                <Link to="/shop?category=Tech">Explore Collection</Link>
+              <Button 
+                render={<Link to="/shop?category=Tech" />} 
+                nativeButton={false} 
+                className="w-fit rounded-full glass bg-white/10 hover:bg-white hover:text-primary border-none"
+              >
+                Explore Collection
               </Button>
             </div>
           </div>
@@ -213,7 +222,7 @@ const Home = () => {
                placeholder="Enter your email address" 
                className="flex-1 rounded-full px-6 py-4 bg-white/10 border border-white/20 focus:outline-none focus:ring-2 focus:ring-primary/20"
              />
-             <Button className="rounded-full px-8 py-4 h-auto shadow-xl shadow-primary/20">Sign Up</Button>
+             <Button className="rounded-full px-8 py-4 h-auto">Sign Up</Button>
            </div>
            <p className="text-[10px] text-muted-foreground/60 uppercase tracking-widest relative z-10">
              You may unsubscribe at any time. View our <Link to="/" className="underline">Privacy Policy</Link>.
